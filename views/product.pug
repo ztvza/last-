@@ -1,0 +1,54 @@
+extends layout/base.pug
+
+block content
+	section.pt-5.mb-5
+		.container
+			nav.mb-4(aria-label='breadcrumb')
+				ol.breadcrumb.bg-light
+					li.breadcrumb-item
+						a(href='/') Главная
+					li.breadcrumb-item
+						a(href=`/${product.brand}`)= product.brand
+					li.breadcrumb-item.active(aria-current='page')= product.name
+			
+			.row
+				.col-md-7
+					img(src= product.image style="max-width: 100%")
+				.col-md-5
+					h3.mb-3#productName= product.name
+
+					.mb-4.justify-content-between
+						h4.text-success
+							span#productPrice #{product.price - product.discount}₽ 
+							if product.discount != 0
+								del.small.text-mutted.text-secondary #{product.price}₽
+
+					p.text-secondary= product.desc
+
+					b
+						| Акксессуары
+
+					.mb-4
+						.form-check
+							input#extraAccumulator.form-check-input(type='checkbox')
+							label.form-check-label(for='extraAccumulator')
+								| Дополнительный аккумулятор (+ #{product.extraAccumulatorPrice}₽)
+
+						.form-check
+							input#extraBlades.form-check-input(type='checkbox')
+							label.form-check-label(for='extraBlades')
+								| Дополнительные лопасти (+ #{product.extraBladesPrice}₽)
+
+					button.btn.btn-success.w-100.mb-2#addToCartButton(
+						type="button"
+						onclick=`addToCart(${JSON.stringify(product)})`
+					)
+						| Заказать товар
+
+					button.btn.btn-link.btn-sm.w-100(type="button") Добавить в избранное
+
+	include partials/buy-product-modal.pug
+
+block customPageScripts
+	script(type="text/javascript" src="/js/productPage.js")
+

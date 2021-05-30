@@ -1,0 +1,10 @@
+mixin product-card(product)
+	.col-md-3
+		.card
+			img.card-img-top(src= product.image)
+			.card-body
+				h5.card-title= product.name
+					span Цена: #{product.price}₽
+					if (product.discount != 0)
+						del.small.text-mutted.text-secondary.ml-2 #{product.price}₽
+				a.btn.btn-primary(href=`/${product.brand}/${product.id}`) Подробнее

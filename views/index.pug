@@ -1,0 +1,20 @@
+extends layout/base.pug
+
+block content
+	section.p-5.mb-4.bg-light.rounded-3(
+		style='background-image: url("/img/main-bg.jpg"); background-position: center;'
+	)
+		.container
+			.container-fluid.py-5.text-light
+				h1.display-5.fw-bold= message
+				p.col-md-8.fs-4.pl-0 Покупайте дронов от проверенного производителя! Следите за соседями, и другими странными личностями! Ну и +500 лайков в инсту!
+				a.btn.btn-primary.btn-lg(href="/drones") Посмотреть всех
+				
+	section
+		.container
+			h2.text-center Топовые дроны:
+			.row
+				each product in products
+					+product-card(product)
+
+	include partials/request-call-form.pug

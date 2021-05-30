@@ -1,0 +1,61 @@
+#buyProductModal.modal.fade(tabindex='-1' aria-labelledby='buyProductModal' aria-hidden='true')
+	.modal-dialog
+		.modal-content
+			.modal-header
+				h5#buyProductModalLabel.modal-title Вы почти у цели!
+				button.btn-close(
+					type='button' 
+					data-bs-dismiss='modal' 
+					aria-label='Close'
+					onclick="closeModal()"
+				)
+			.modal-body
+				p.mb-2
+					span Модель: 
+					b= product.name
+
+				p.mb-3
+					span Итоговая стоимость:
+					b#finalPrice
+
+				.row
+					form.col-md-5
+						.mb-3
+							label.form-label(for="name") Имя и Фамилия
+							input.form-control(
+								type="text" 
+								id="name" 
+								name="name"
+								placeholder="Иван Васильевич"
+								required
+							)
+						.mb-3
+							label.form-label(for="email") Почта
+							input.form-control(
+								type="email" 
+								id="email" 
+								name="email"
+								placeholder="zack@facebook.com"
+								required
+							)
+						.mb-3
+							label.form-label(for="phone") Телефон
+							input.form-control(
+								type="text" 
+								id="phone" 
+								name="phone"
+								placeholder="+7 (345) 555-55-55"
+								required
+							)
+
+			.modal-footer
+				button.btn.btn-secondary(
+					type='button' 
+					data-bs-dismiss='modal' 
+					onclick="closeModal()"
+				) Отмена
+
+				button.btn.btn-primary(
+					type='button'
+					onclick=`sendPurchaseRequest(${JSON.stringify(product)})`
+					) Заказать

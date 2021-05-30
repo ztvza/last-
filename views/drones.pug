@@ -1,0 +1,9 @@
+extends layout/base.pug
+
+block content
+	section.pt-4.mb-5
+		.container
+			h1.mb-5 Вся продукция магазина
+			.row
+				each product in products
+					+product-card(product)

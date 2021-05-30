@@ -1,0 +1,33 @@
+section.mt-5(style="margin-bottom: 200px;")
+	.container
+		h2.mb-4.text-center Заказать обратный звонок
+		.row.justify-content-center
+			form.col-md-5(action="/api/newRequest" method="get")
+				.mb-3
+					label.form-label(for="name") Имя и Фамилия
+					input.form-control(
+						type="text" 
+						id="name" 
+						name="name"
+						placeholder="Иван Васильевич"
+						required
+					)
+				.mb-3
+					label.form-label(for="email") Почта
+					input.form-control(
+						type="email" 
+						id="email" 
+						name="email"
+						placeholder="zack@facebook.com"
+						required
+					)
+				.mb-3
+					label.form-label(for="phone") Телефон
+					input.form-control(
+						type="text" 
+						id="phone" 
+						name="phone"
+						placeholder="+7 (345) 555-55-55"
+						required
+					)
+				button.btn.btn-success.w-100(type="submit") Оставить заявку
